@@ -55,7 +55,7 @@
     $('#form').on('submit', function(event) {
         $.ajax({
             type: 'POST',
-            url:  '/response.json',
+            url:  '../response.json',
              data: 'car-model="' + $('input[name="car"]:checked').val() + '"&car-color="' + $('#select-color').val() + '"',
              dataType: 'HTML',
             success: function(response) {
