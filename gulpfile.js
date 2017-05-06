@@ -78,7 +78,7 @@ gulp.task('connect', function () {
 
 gulp.task('setup', function () {
     // create test file for uploading
-    require('child_process').exec('fsutil file createnew uploadFile 1073741824', function (err) {
+    require('child_process').exec('mkfile 1073741824 uploadFile', function (err) {
         if (err) return console.log(err);
         console.log('Test upload file created');
     });
