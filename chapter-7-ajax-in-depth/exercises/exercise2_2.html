@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ajax in depth</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400,700" rel="stylesheet">
+  </head>
+  <body>
+
+  <div class="container">
+    <form action="" id="form">
+      <fieldset>
+        <legend>Choose your car</legend>
+          <div class="form__field">
+            <label for="radio-1">Ferrari</label>
+            <input type="radio" name="car" value="ferrari" id="radio-1" checked />
+          </div>
+          <div class="form__field">
+            <label for="radio-2">Lamborghini</label>
+            <input type="radio" name="car" value="lamborghini" id="radio-2" />
+          </div>
+          <div class="form__field">
+            <label for="radio-3">Bugatti</label>
+            <input type="radio" name="car" value="bugatti" id="radio-3" />
+          </div>
+          <div class="form__field">
+            <label for="radio-4">Porsche</label>
+            <input type="radio" name="car" value="porsche" id="radio-4" />
+          </div>
+          <div class="form__field">
+            <label for="radio-5">Maserati</label>
+            <input type="radio" name="car" value="maserati" id="radio-5" />
+          </div>
+
+          <div>
+            <label>Choose the color</label>
+            <select name="" id="select-color">
+              <option value="red">Red</option>
+              <option value="black">Black</option>
+              <option value="white">White</option>
+            </select>
+          </div>
+
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    var form = document.querySelector( '#form' );
+
+    form.addEventListener('submit', function(event) {
+      var car   = document.querySelector('input[name="car"]:checked').value;
+      var sel   = document.getElementById('select-color');
+      var color = sel.options[sel.selectedIndex].value;
+
+      var xhr   = new XMLHttpRequest(),
+          formData = new FormData();
+
+      formData.append('car-model', car);
+      formData.append('car-color', color);
+
+      xhr.open('POST', '/response.json');
+      xhr.send(formData);
+
+      event.preventDefault();
+    });
+
+  </script>
+
+  </body>
+</html>

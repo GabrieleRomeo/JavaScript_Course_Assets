@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ajax in depth</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  </head>
+  <body>
+
+  <div class="container">
+    <form action="" id="form">
+      <fieldset>
+        <legend>Choose your car</legend>
+          <div class="form__field">
+            <label for="radio-1">Ferrari</label>
+            <input type="radio" name="car" value="ferrari" id="radio-1" checked />
+          </div>
+          <div class="form__field">
+            <label for="radio-2">Lamborghini</label>
+            <input type="radio" name="car" value="lamborghini" id="radio-2" />
+          </div>
+          <div class="form__field">
+            <label for="radio-3">Bugatti</label>
+            <input type="radio" name="car" value="bugatti" id="radio-3" />
+          </div>
+          <div class="form__field">
+            <label for="radio-4">Porsche</label>
+            <input type="radio" name="car" value="porsche" id="radio-4" />
+          </div>
+          <div class="form__field">
+            <label for="radio-5">Maserati</label>
+            <input type="radio" name="car" value="maserati" id="radio-5" />
+          </div>
+
+          <div>
+            <label>Choose the color</label>
+            <select name="" id="select-color">
+              <option value="red">Red</option>
+              <option value="black">Black</option>
+              <option value="white">White</option>
+            </select>
+          </div>
+
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    $('#form').on('submit', function(event) {
+
+        var carModel = $('input[name="car"]:checked').val();
+        var carColor = $('#select-color').val();
+
+        $.ajax({
+            type: 'POST',
+            url:  '/response.json',
+             data: 'car-model="' + carModel + '"&car-color="' + carColor + '"',
+             dataType: 'HTML',
+            success: function(response) {
+                console.log(response);
+            }
+        });
+        event.preventDefault();
+    });
+
+  </script>
+
+  </body>
+</html>
