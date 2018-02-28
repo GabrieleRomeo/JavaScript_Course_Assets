@@ -14,7 +14,7 @@ export class Application {
             this.fleetManager = new FleetManager(this.dal.fleetData);
             this.map = this.uiManager.addMap('gMap', { lat: 50.909698, lng: -1.404351 });
             this.addVehicleMarkers(this.fleetManager.fleet);
-            this.infoWindow = this.map.addInfoWindow;
+            this.infoWindow = this.map.addInfoWindow();
         });
 
         this.uiManager = new UiManager();
